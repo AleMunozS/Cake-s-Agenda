@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% include 'Cakes/base.html' %}
+{% block content %}
+    <div class='container'>
+        <table id="example" class="table" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Persona</th>
+                    <th>Fecha De Entrega</th>
+                    <th>Direccion</th>
+                    <th>Sabor</th>
+                    <th>Fecha de pedido</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for pedido in pedidos_list %}
+                <tr class={{pedido.days}}> 
+                    <td><a href="{% url 'Cakes:pedidos_detail' pedido.pk %}">{{pedido.persona}}</a></td>
+                    <td>{{pedido.fecha_entrega}}</td>
+                    <td>{{pedido.direccion}}</td>
+                    <td>{{pedido.sabor}}</td>
+                    <td>{{pedido.fecha_pedido}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+{% endblock content %}

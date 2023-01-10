@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% include 'Cakes/base.html' %}
+{% block content %}
+    <div class="container mt-5">
+        <h1>Confirmar Eliminación</h1>
+        <hr>    
+        <p>Seguro que quieres eliminar este pedido?</p>
+    <table class="table">
+      <tr>
+        <th>Persona</th>
+        <td>{{ pedidos.persona }}</td>
+      </tr>
+      <tr>
+        <th>Fecha de Entrega</th>
+        <td>{{ pedidos.fecha_entrega }}</td>
+      </tr>
+      <tr>
+        <th>Sabor de Pedido</th>
+        <td>{{ pedidos.sabor }}</td>
+      </tr>
+    </table>
+    <form method="post">
+      {% csrf_token %}
+      <input type="submit" value="Delete" class="btn btn-danger">
+      <a href="{% url 'Cakes:pedidos_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+ </div
+{% endblock content %}

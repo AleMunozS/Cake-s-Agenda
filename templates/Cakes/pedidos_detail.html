@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% include 'Cakes/base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h1>Model Details</h1>
+    <hr>
+    <div class="row">
+      <div class="col-md-4">
+        <p><strong>Persona</strong> {{ pedidos.persona }}</p>
+        <p><strong>Sabor</strong> {{ pedidos.sabor }}</p>
+        <p><strong>Fecha de Entrega</strong> {{ pedidos.fecha_entrega }}</p>
+      </div>
+      <div class="col-md-4">
+        <p><strong>Detalles</strong> {{ pedidos.detalles}}</p>
+        <p><strong>Fecha de Pedido</strong> {{ pedidos.fecha_pedido }}</p>
+      </div>
+    </div>
+    <form method="post" action="{% url 'Cakes:pedidos_delete' object.pk %}">
+      {% csrf_token %}
+      <a href="{% url 'Cakes:pedidos_update' object.pk %}" class="btn btn-warning mr-2">Update</a>
+      <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this object?');" />
+      <input type="hidden" name="_method" value="DELETE" />
+   </form>
+   
+</div>
+  
+
+  
+{% endblock content %}
